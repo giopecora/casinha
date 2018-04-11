@@ -15,6 +15,7 @@ class Produtos extends Migration
     {
         if (!Schema::hasTable('produtos')) {
             Schema::create('produtos', function(Blueprint $table){
+                $table->increments('idProduto');
                 $table->string('codigoProduto',50);
                 $table->string('descricao',200);
                 $table->string('grupo',50);
