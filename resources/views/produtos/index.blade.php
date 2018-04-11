@@ -35,7 +35,7 @@
                                 <td>{{$produto->qtdeDisponivel}}</td>
                                 <td>
                                     <a href="{{route('produtos.edit', $produto->idProduto)}}"><i class="glyphicon glyphicon-pencil"></i></a>
-                                    <a ><i class="glyphicon glyphicon-trash"></i></a>
+                                    <a href="{{route('produtos.remove', $produto->idProduto)}}"><i class="glyphicon glyphicon-trash"></i></a>
                                     <a href="{{route('produtos.show', $produto->codigoProduto)}}"><i class="glyphicon glyphicon-zoom-in"></i></a>
                                 </td>                                
                             </tr>                         

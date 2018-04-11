@@ -86,7 +86,16 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = $this->validarProduto($request);
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator->errors());
+        }
+        
+        $produto = Produto::find($id);
+        $dados = $request->all();
+        $produto->update($dados);
+
+        return redirect()->route('produtos.index');
     }
 
     /**
@@ -97,6 +106,12 @@ class ProdutoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Produto::find($id)->delete();
+        return redirect()->route('produtos.index');
+    }
+    public function remover($id)
+    {
+        $produto = Produto::find($id);
+        return view('produtos.remove', compact('produto'));
     }
 }

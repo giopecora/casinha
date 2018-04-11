@@ -10,7 +10,7 @@
     <div class="panel panel-default">
         <div class="panel-heading"><h3>Edite o Produto</h3></div>
         <div class="panel-body">
-            <form method="post" action="{{route ('produtos.update', $produto->codigoProduto)}}">  
+            <form method="post" action="{{route ('produtos.update', $produto->idProduto)}}">  
             <input type="hidden" name="_method" value="PUT">
             {{ csrf_field() }}          
                 <h4>Dados do produto</h4>

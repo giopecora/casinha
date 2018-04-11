@@ -11,4 +11,5 @@
 |
 */
 
+Route::get('/produtos/remove/{id}', 'ProdutoController@remover')->name('produtos.remove');
 Route::resource('produtos', 'ProdutoController');
