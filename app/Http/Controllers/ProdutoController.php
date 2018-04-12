@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\Paginator;
 use App\Models\Produto;
 use Validator;
 class ProdutoController extends Controller
@@ -20,9 +22,45 @@ class ProdutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $produtos = Produto::all();
+        $qtd = $request['qtd']?:2;
+        $page = $request['page'] ?: 1;
+        $buscar = $request['buscar'];
+        $tipo = $request['tipo'];
+
+        Paginator::currentPageResolver(function () use ($page){
+            return $page;
+        });
+        if($buscar){
+            switch($tipo){
+                case 'Codigo':
+                    $produtos = DB::table('produtos')
+                    ->where('codigoProduto', 'like',"%" . $buscar . "%")
+                    ->paginate($qtd);
+                break;
+                case 'Descricao':
+                    $produtos = DB::table('produtos')
+                    ->where('descricao', 'like', "%" . $buscar . "%")
+                    ->paginate($qtd);
+                break;                
+                case 'Grupo':
+                    $produtos = DB::table('produtos')
+                    ->where('grupo', 'like', "%" . $buscar . "%")
+                    ->paginate($qtd);
+                break;                
+                case 'Todos':
+                   
+                break;                
+            }
+
+        }else{  
+            $produtos = DB::table('produtos')->paginate($qtd);
+            $produtos = $produtos->appends(Request::capture()->except('page'));
+        }
+
+        
+
         return view('produtos.index',compact('produtos'));
     }
 
@@ -62,7 +100,8 @@ class ProdutoController extends Controller
      */
     public function show($id)
     {
-        //
+        $produto = Produto::find($id);
+        return view('produtos.show', compact('produto'));
     }
 
     /**

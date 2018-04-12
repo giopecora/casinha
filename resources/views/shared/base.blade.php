@@ -28,14 +28,14 @@
                     </button>
                     <a class="navbar-brand" href="#">Início</a>
                 </div>
-                <div id="navbar" class="navbar-collapse collapse">
+                <!--div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="{{route('produtos.index')}}">Todos</a></li>
                         <li><a href="{{route('produtos.index', 'tipo=apartamento')}}">Apartamentos</a></li>
                         <li><a href="{{route('produtos.index', 'tipo=casa')}}">Casas</a></li>
                         <li><a href="{{route('produtos.index', 'tipo=kitnet')}}">Kitnet</a></li>
                     </ul>
-                </div>
+                </div-->
             </div>
         </nav>
         <div class="container">

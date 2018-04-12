@@ -46,12 +46,12 @@
                                 <input type="number" class="form-control" placeholder="Qtd. Alugada" required name="qtdeAlugada" value="{{$produto->qtdeAlugada}}">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="nomeImagem">Caminho Imagem</label>
-                                    <input type="text" class="form-control" placeholder="Caminho Imagem" required name="nomeImagem" value="{{$produto->nomeImagem}}">
-                                </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="nomeImagem">Caminho Imagem</label>
+                                <input type="text" class="form-control" placeholder="Caminho Imagem" required name="nomeImagem" value="{{$produto->nomeImagem}}">
                             </div>
                         </div>
                     </div>
